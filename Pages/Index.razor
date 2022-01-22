@@ -1,9 +1,39 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@using Data
 
-<h1>Hello, world!</h1>
+@inject TodoItemService todoItemService
 
-Welcome to your new app.
+@code {
+    private List<TodoItem>? _data;
+    private string? _current;
+    private TodoItem? _item;
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    protected override void OnInitialized()
+    {
+        _data = todoItemService.GetData();
+        _item = _data != null && _data.Count > 0 ? _data[0] : null;
+    }
+}
+
+<ol class="list-group">
+    @foreach (var item in _data)
+    {
+        <li>
+            <div class='input-group mb-3 @(item.IsDone ? "border border-success":"")'>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <input type="checkbox" @bind="item.IsDone" class="custom-checkbox" />
+                    </span>
+                </div>
+                <input type="text" @bind="item.Title" class="form-control" placeholder="Todo" />
+                <input type="text" @bind="item.Note" class="form-control" placeholder="Note" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-danger" type="button">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </li>
+    }
+</ol>
