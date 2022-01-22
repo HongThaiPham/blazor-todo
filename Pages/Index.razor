@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 @using Data
+@using BlazorTodo.Components
 
 @inject TodoItemService todoItemService
 
@@ -51,6 +52,8 @@
     </div>
 </div>
 
+<TodoListItem Item="_item" />
+
 <ol class="list-group">
     @foreach (var item in _data)
     {
@@ -61,8 +64,8 @@
                         <input type="checkbox" @bind="item.IsDone" class="custom-checkbox" />
                     </span>
                 </div>
-                <input type="text" @bind="item.Title" class="form-control" placeholder="Todo" />
-                <input type="text" @bind="item.Note" class="form-control" placeholder="Note" />
+                <input type="text" @bind="item.Title" class="form-control" placeholder="Todo" @onfocus="@(e=>_item=item)" />
+                <input type="text" @bind="item.Note" class="form-control" placeholder="Note" @onfocus="@(e=>_item=item)" />
                 <div class="input-group-append">
                     <button class="btn btn-outline-danger" type="button" @onclick="@(e => _data.Remove(item))">
                         <i class="fas fa-trash-alt"></i> Delete
