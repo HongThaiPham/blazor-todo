@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ldnnIN7GoGrwW7RN3wz1Tb4yuUC/b3cVg0aj9ziEeEnoE1vY415uQH7EPMC1t3QGES6936qSlrhWWQRRwKMZjg==",
+  "dgSpecHash": "4mAcO4lWHt6IchnziUk1KEine8hjrSW9yOBPXHldPe4E3TggF8LDXrZX6JmtOOPVTylblRFfwE/3iscg72Cvkw==",
   "success": true,
   "projectFilePath": "/Users/leophamdev/Desktop/dotnet/BlazorTodo/BlazorTodo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/leophamdev/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
